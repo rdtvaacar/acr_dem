@@ -195,15 +195,15 @@
     </tr>
     <tr>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->yetkili ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->yetkili ?></span></td>
     </tr>
     <tr>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->yetkili_unvan ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->yetkili_unvan ?></span></td>
     </tr>
     <tr>
         <td></td>
@@ -224,15 +224,15 @@
     </tr>
     <tr>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->teslim_eden ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->teslim_alan ?></span></td>
     </tr>
     <tr>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->teslim_eden_unvan ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı:........................................</span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->teslim_alan_unvan ?></span></td>
     </tr>
     <tr>
         <td></td>
