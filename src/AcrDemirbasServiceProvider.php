@@ -15,10 +15,10 @@ class AcrDemirbasServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        $this->loadViewsFrom(__DIR__ . '/Views', 'acr_views');
         $this->publishes([
             __DIR__ . '/../config/demirbas_config.php' => config_path('demirbas_config.php'),
         ]);
-
         require __DIR__ . '/Routes/routes.php';
     }
 
