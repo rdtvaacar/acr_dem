@@ -32,12 +32,13 @@
     $satir = 1;
     if(empty(Input::get('bosListe'))) {
 
-
+    $son_yil = empty($data->amortisman_id) ? '' : date('d.', strtotime($data->demirbas_alis_tarihi)) . date('m.', strtotime($data->demirbas_alis_tarihi)) . (date('Y', strtotime($data->demirbas_alis_tarihi)) +
+            $data->omur);
     foreach ($demirbas_data as $data) { ?>
     <tr>
         <td><?php echo $satir; ?></td>
         <td><?php echo $data->demirbas_no ?></td>
-        <td><?php echo $data->demirbas_kodu ?></td>
+        <td><?php echo $data->kod_1 . ' ' . $data->kod_2 . ' ' . $data->kod_3 . ' ' . $data->kod_4 . ' ' . $data->kod_5 . ' ' . $data->kod_6  ?></td>
         <td><?php echo $data->demirbas_isim ?></td>
         <td><?php echo $data->demirbas_aciklama ?></td>
         <td><?php echo $data->demirbas_marka ?></td>
@@ -45,14 +46,14 @@
         <td><?php echo $data->grup_isim ?></td>
         <td><?php echo $data->demirbas_miktar ?></td>
         <td><?php echo $data->demirbas_deger ?></td>
-        <td><?php echo $data->demirbas_miktar * $data->demirbas_deger ?> ₺</td>
-        <td><?php echo $data->demirbas_alis_tarihi ?></td>
+        <td><?php echo $data->demirbas_miktar * $data->demirbas_deger ?></td>
+        <td><?php echo date('d.m.Y', strtotime($data->demirbas_alis_tarihi)) ?></td>
         <td><?php echo $data->amortisman_id ?></td>
         <td><?php echo $data->omur ?></td>
         <td><?php echo $data->oran ?></td>
         <td><?php echo $data->demirbas_bakim_periyodu ?> AY</td>
         <td><?php echo $data->demirbas_bulunan_yer ?></td>
-        <td><?php echo date('d/', strtotime($data->demirbas_alis_tarihi)) . date('m/', strtotime($data->demirbas_alis_tarihi)) . (date('Y/', strtotime($data->demirbas_alis_tarihi)) + $data->omur)?></td>
+        <td><?php echo $son_yil ?></td>
         <td><?php echo $data->demirbas_plaka ?></td>
         <td><?php echo $data->demirbas_motor_no ?></td>
         <td><?php echo $data->demirbas_sasi_no?></td>

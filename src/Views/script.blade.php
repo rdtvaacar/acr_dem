@@ -21,6 +21,70 @@
             }
         });
     });
+
+    function demirbas_hesap_sec(demirbas_id) {
+        $.ajax({
+            type   : 'post',
+            url    : 'tum_hesaplar',
+            data   : 'demirbas_id=' + demirbas_id,
+            success: function (veri) {
+                $('.modal-title').html('hesap Seçim Ekranı');
+                $('.modal-body').html(veri);
+                $('#demirbasModal').modal('show');
+            }
+        });
+    }
+    function demirbas_hesaplar() {
+        $.ajax({
+            type   : 'post',
+            url    : 'demirbas_hesaplar',
+            success: function (veri) {
+                $('.modal-title').html('hesap Düzenleme <div style="float: right; margin-right: 50px;" class="btn btn-success " onclick="yeni_hesap_ekle(0)">Yeni hesap Ekle</div>');
+                $('.modal-body').html(veri);
+                $('#demirbasModal').modal('show');
+            }
+        });
+    }
+    function hesap_guncelle(hesap_id) {
+        var hesap_isim = $('#hesap_isim_' + hesap_id).val();
+        var hesap_aciklama = $('#hesap_aciklama_' + hesap_id).val();
+        var hesap_vergi_no = $('#hesap_vergi_no_' + hesap_id).val();
+        $.ajax({
+            type   : 'post',
+            url    : 'demirbas_hesap_guncelle',
+            data   : 'hesap_isim=' + hesap_isim + '&hesap_aciklama=' + hesap_aciklama + '&hesap_vergi_no=' + hesap_vergi_no + '&hesap_id=' + hesap_id,
+            success: function (veri) {
+                $('#hesap_guncel_' + hesap_id).show();
+                $('#hesap_guncel_' + hesap_id).html('<span style="color: #1c9f0a" class="glyphicon glyphicon-ok-sign"></span>');
+                $('#hesap_guncel_' + hesap_id).fadeOut(1000);
+                $('.duzenleme_input_' + hesap_id).hide();
+                $('#duzenleButton_' + hesap_id).show();
+            }
+        });
+    }
+    function demirbas_hesap_tuttur(hesap_id, demirbas_id) {
+        $.ajax({
+            type   : 'post',
+            url    : 'demirbas_hesap_tuttur',
+            data   : 'hesap_id=' + hesap_id + '&demirbas_id=' + demirbas_id,
+            success: function (veri) {
+                $('#demirbas_hesap_kod_' + demirbas_id).html(veri);
+                $('#demirbasModal').modal('hide');
+            }
+        });
+    }
+    function derirbas_hesap_sil(hesap_id) {
+        if (confirm('hesap silinsin mi?') == true) {
+            $.ajax({
+                type   : 'post',
+                url    : 'derirbas_hesap_sil',
+                data   : 'hesap_id=' + hesap_id,
+                success: function () {
+                    $('#hesap_' + hesap_id).hide();
+                }
+            });
+        }
+    }
     function yeni_grup_ekle(id) {
         $.ajax({
             type   : 'post',
@@ -83,6 +147,18 @@
             }
         });
     }
+    function demirbas_ayarlar() {
+        $.ajax({
+            type   : 'post',
+            url    : 'demirbas_ayarlar',
+            success: function (veri) {
+                $('.modal-title').html('Demirbaş Genel Ayarlar');
+                $('.modal-body').html(veri);
+                $('#demirbasModal').modal('show');
+            }
+        });
+
+    }
     function derirbas_grup_sil(grup_id) {
         if (confirm('grup silinsin mi?') == true) {
             $.ajax({
@@ -95,21 +171,28 @@
             });
         }
     }
-    function demirbas_duzenle_kaydet(demirbas_id) {
+    function demirbas_duzenle_kaydet(demirbas_id, yeni_demirbas) {
         $.ajax({
             type   : 'post',
             url    : 'demirbas_duzenle_kaydet',
             data   : $("#demirbas_duzenle_form").serialize(),
             success: function (veri) {
-                $('#demirbas_isim_' + demirbas_id).html(veri[0]);
-                $('#demirbas_grup_' + demirbas_id).html(veri[1]);
-                $('#demirbas_aciklama_' + demirbas_id).html(veri[2]);
-                $('#demirbas_firma' + demirbas_id).html(veri[3]);
-                $('#amortisman_' + demirbas_id).html(veri[4]);
-                $('#amortisman_omur' + demirbas_id).html(veri[5]);
-                $('#amortisman_oran' + demirbas_id).html(veri[6]);
-                $('#demirbas_' + demirbas_id).addClass('bg bg-info');
+                if (yeni_demirbas == 1) {
+                    $('#demirbaslar').append(veri);
+                } else {
+                    $('#demirbas_isim_' + demirbas_id).html(veri[0]);
+                    $('#demirbas_deger_' + demirbas_id).html(veri[1]);
+                    $('#demirbas_miktar_' + demirbas_id).html(veri[2]);
+                    $('#demirbas_toplamFiyat_' + demirbas_id).html(veri[3]);
+                    $('#demirbas_hesap_kod_' + demirbas_id).html(veri[4]);
+                    $('#demirbas_grup_' + demirbas_id).html(veri[5]);
+                    $('#demirbas_firma' + demirbas_id).html(veri[6]);
+                    $('#amortisman_' + demirbas_id).html(veri[7]);
+                    $('#amortisman_son_yil_' + demirbas_id).html(veri[8]);
+                    $('#demirbas_' + demirbas_id).addClass('bg bg-info');
+                }
                 $('#demirbasModal').modal('hide');
+
             }
         });
     }
@@ -184,6 +267,7 @@
     }
 
     function demirbas_duzenle(demirbas_id) {
+
         $.ajax({
             type   : 'post',
             url    : 'demirbas_duzenle',

@@ -41,9 +41,10 @@ class Demirbas_model extends Model
     {
         $demirbaslar = Demirbas_model::leftJoin('demirbas_amortisman', 'demirbas_amortisman.id', '=', 'demirbas.amortisman_id')
             ->leftJoin('demirbas_firma', 'demirbas_firma.id', '=', 'demirbas.firma_id')
+            ->leftJoin('demirbas_hesap', 'demirbas_hesap.id', '=', 'demirbas.hesap_id')
             ->leftJoin('demirbas_grup', 'demirbas_grup.id', '=', 'demirbas.grup_id')
             ->leftJoin('demirbas_birim', 'demirbas_birim.id', '=', 'demirbas.birim_id')
-            ->select("demirbas.*", "demirbas_amortisman.*", "demirbas_firma.*", "demirbas_grup.*", "demirbas_birim.*", "demirbas.id as demirbas_id", "demirbas_amortisman.id as amortisman_id", "demirbas_firma.id as firma_id", "demirbas_grup.id as grup_id", "demirbas_birim.id as birim_id")
+            ->select("demirbas.*", "demirbas_amortisman.*", "demirbas_firma.*", "demirbas_grup.*", "demirbas_birim.*", "demirbas_hesap.*", "demirbas.id as demirbas_id", "demirbas_amortisman.id as amortisman_id", "demirbas_firma.id as firma_id", "demirbas_grup.id as grup_id", "demirbas_birim.id as birim_id", "demirbas_hesap.id as hesap_id")
             ->where('demirbas.kurum_id', $this->kurum_id())
             ->where('demirbas.sil', 0)
             ->orderBy('demirbas.grup_id')
@@ -57,7 +58,8 @@ class Demirbas_model extends Model
             ->leftJoin('demirbas_firma', 'demirbas_firma.id', '=', 'demirbas.firma_id')
             ->leftJoin('demirbas_grup', 'demirbas_grup.id', '=', 'demirbas.grup_id')
             ->leftJoin('demirbas_birim', 'demirbas_birim.id', '=', 'demirbas.birim_id')
-            ->select("demirbas.*", "demirbas_amortisman.*", "demirbas_firma.*", "demirbas_grup.*", "demirbas_birim.*", "demirbas.id as demirbas_id", "demirbas_amortisman.id as amortisman_id", "demirbas_firma.id as firma_id", "demirbas_grup.id as grup_id", "demirbas_birim.id as birim_id")
+            ->leftJoin('demirbas_hesap', 'demirbas_hesap.id', '=', 'demirbas.hesap_id')
+            ->select("demirbas.*", "demirbas_amortisman.*", "demirbas_firma.*", "demirbas_grup.*", "demirbas_birim.*", "demirbas_hesap.*", "demirbas.id as demirbas_id", "demirbas_amortisman.id as amortisman_id", "demirbas_firma.id as firma_id", "demirbas_grup.id as grup_id", "demirbas_birim.id as birim_id", "demirbas_hesap.id as hesap_id")
             ->where('demirbas.kurum_id', $this->kurum_id())
             ->where('demirbas.id', $id)
             ->first();
@@ -85,6 +87,11 @@ class Demirbas_model extends Model
         return Demirbas_grup_model::where('kurum_id', $this->kurum_id())->where('sil', 0)->get();
     }
 
+    function hesaplar()
+    {
+        return Demirbas_hesap_model::get();
+    }
+
     function demirbas_guncelle($demirbas_id, $data)
     {
         Demirbas_model::where('id', $demirbas_id)->where('kurum_id', $this->kurum_id())->update($data);
@@ -100,5 +107,61 @@ class Demirbas_model extends Model
     function personellerUye()
     {
         return Personel_model::where('uye_id', $this->uye_id())->get();
+    }
+
+    function demirbasDizi($dizi)
+    {
+        return $demirbaslar = Demirbas_model::leftJoin('demirbas_amortisman', 'demirbas_amortisman.id', '=', 'demirbas.amortisman_id')
+            ->leftJoin('demirbas_firma', 'demirbas_firma.id', '=', 'demirbas.firma_id')
+            ->leftJoin('demirbas_hesap', 'demirbas_hesap.id', '=', 'demirbas.hesap_id')
+            ->leftJoin('demirbas_grup', 'demirbas_grup.id', '=', 'demirbas.grup_id')
+            ->leftJoin('demirbas_birim', 'demirbas_birim.id', '=', 'demirbas.birim_id')
+            ->select("demirbas.*", "demirbas_amortisman.*", "demirbas_firma.*", "demirbas_grup.*", "demirbas_birim.*", "demirbas_hesap.*", "demirbas.id as demirbas_id", "demirbas_amortisman.id as amortisman_id", "demirbas_firma.id as firma_id", "demirbas_grup.id as grup_id", "demirbas_birim.id as birim_id", "demirbas_hesap.id as hesap_id")
+            ->where('demirbas.kurum_id', $this->kurum_id())
+            ->where('demirbas.sil', 0)
+            ->whereIn('demirbas.id', $dizi)
+            ->orderBy('demirbas.grup_id')
+            ->get();
+    }
+
+    function hesap_kod_ara($kod1, $kod2, $kod3, $kod4, $kod5, $kod6)
+    {
+        $kod2 = empty($kod2) ? 0 : $kod2;
+        $kod3 = empty($kod3) ? 0 : $kod3;
+        $kod4 = empty($kod4) ? 0 : $kod4;
+        $kod5 = empty($kod5) ? 0 : $kod5;
+        $kod6 = empty($kod6) ? 0 : $kod6;
+        return Demirbas_hesap_model::where('kod_1', $kod1)
+            ->where('kod_2', $kod2)
+            ->where('kod_3', $kod3)
+            ->where('kod_4', $kod4)
+            ->where('kod_5', $kod5)
+            ->where('kod_6', $kod6)
+            ->first();
+    }
+
+    function demirbas_ayar()
+    {
+        return Demirbas_ayar_model::where('kurum_id', $this->kurum_id())->first();
+    }
+
+    function demirbas_ayar_kaydet($data)
+    {
+        $dataUser = [
+            'kurum_id' => $this->kurum_id(),
+            'uye_id'   => $this->uye_id()
+        ];
+
+        if (empty(self::demirbas_ayar())) {
+            $datas = array_merge($dataUser, $data);
+            Demirbas_ayar_model::insert($datas);
+        } else {
+            Demirbas_ayar_model::where('kurum_id', $this->kurum_id())->update($data);
+        }
+    }
+
+    function demirbas_no()
+    {
+        return Demirbas_model::where('kurum_id', $this->kurum_id())->where('sil', 0)->orderBy('id', 'desc')->select('demirbas_no')->first()->demirbas_no + 1;
     }
 }

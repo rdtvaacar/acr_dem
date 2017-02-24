@@ -19,7 +19,26 @@ Route::post('/demirbas_firma_guncelle', function () {
 Route::post('/demirbas_firma_tuttur', function () {
     return Demirbas::demirbas_firma_tuttur();
 });
+// hesaplar
 
+Route::post('/derirbas_hesap_sil', function () {
+    return Demirbas::hesap_sil();
+});
+Route::post('/tum_hesaplar', function () {
+    return Demirbas::tum_hesaplar();
+});
+Route::post('/demirbas_hesaplar', function () {
+    return Demirbas::demirbas_hesaplar();
+});
+Route::post('/demirbas_hesap_ekle', function () {
+    return Demirbas::hesap_ekle();
+});
+Route::post('/demirbas_hesap_guncelle', function () {
+    return Demirbas::hesap_guncelle();
+});
+Route::post('/demirbas_hesap_tuttur', function () {
+    return Demirbas::demirbas_hesap_tuttur();
+});
 // gruplar
 Route::post('/derirbas_grup_sil', function () {
     return Demirbas::grup_sil();
@@ -77,10 +96,29 @@ Route::post('/tum_demirbas_sil', function () {
 });
 
 // excel
+Route::get('/amortismanYukle', function () {
+    return Demirbas::amortismanYukle();
+});
 Route::get('/demirbas_excel_aktar', function () {
     return Demirbas::demirbas_excel_aktar();
 });
-
 Route::post('/demirbas_excel_yukle', function () {
     return Demirbas::demirbas_excel_yukle();
+});
+Route::post('/demirbas_hesap_excel_yukle', function () {
+    return Demirbas::demirbas_hesap_excel_yukle();
+});
+
+// raporlar
+Route::post('/raporOlustur', function () {
+    return Demirbas::raporOlustur();
+});
+
+// ayarlar
+
+Route::post('/demirbas_ayarlar', function () {
+    return Demirbas::demirbas_ayarlar();
+});
+Route::post('/demirbas_ayar_kaydet', function () {
+    return Demirbas::demirbas_ayar_kaydet();
 });

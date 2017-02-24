@@ -13,30 +13,36 @@ use Acr\Demirbas\Model\Amortisman_model;
 
 class AmortismanContorller extends BaseController
 {
-    function excelAktar()
+    function amortismanYukle()
     {
-
         //  $amr = new Amortisman();
-        Excel::load('amortisman.xlsx', function ($reader) {
-
-
+        Excel::load(public_path() . '/Amortismanlar.xlsx', function ($reader) {
             $reader->each(function ($sheet) {
-
                 // Loop through all rows
-                $sheet->each(function ($row) {
-                    $amr     = new Amortisman_model();
-                    $isimExp = explode(":", $row->amortismana_tabi_iktisadi_kiymetler);
-                    if (empty($row->normal_amortisman_orani)) {
+                $satir = 1;
+                $sheet->each(function ($row) use ($satir) {
+                    $row->a_kod_1 = $row->a_kod_1 == null ? 0 : $row->a_kod_1;
+                    $row->a_kod_2 = $row->a_kod_2 == null ? 0 : $row->a_kod_2;
+                    $row->a_kod_3 = $row->a_kod_3 == null ? 0 : $row->a_kod_3;
+                    $row->a_kod_4 = $row->a_kod_4 == null ? 0 : $row->a_kod_4;
+                    $amr          = new Amortisman_model();
+                    $isimExp      = explode(":", $row->amortisman);
+                    if (empty($row->oran)) {
                         if (count($isimExp) > 1) {
                             $aciklama = $isimExp[1];
                         } else {
                             $aciklama = '';
                         }
                         $data               = [
+                            'a_kod_1'             => $row->a_kod_1,
+                            'a_kod_2'             => $row->a_kod_2,
+                            'a_kod_3'             => $row->a_kod_3,
+                            'a_kod_4'             => $row->a_kod_4,
                             'amortisman'          => $isimExp[0],
                             'amortisman_aciklama' => $aciklama,
-                            'omur'                => $row->faydali_omur_yil,
-                            'oran'                => str_replace(',', '.', $row->normal_amortisman_orani)
+                            'omur'                => $row->omur,
+                            'oran'                => str_replace([',', '%'], ['', ''], $row->oran),
+                            'teblig'              => $row->teblig,
                         ];
                         $id                 = $amr->insertGetId($data);
                         $amr->amortisman_id = $id;
@@ -51,19 +57,23 @@ class AmortismanContorller extends BaseController
                         $amr_id = $amr->orderBy('amortisman_id', 'desc')->first()->amortisman_id;
                         $data   = [
                             'amortisman_id'       => $amr_id,
+                            'a_kod_1'             => $row->a_kod_1,
+                            'a_kod_2'             => $row->a_kod_2,
+                            'a_kod_3'             => $row->a_kod_3,
+                            'a_kod_4'             => $row->a_kod_4,
                             'amortisman'          => $isimExp[0],
                             'amortisman_aciklama' => $aciklama,
-                            'omur'                => $row->faydali_omur_yil,
-                            'oran'                => str_replace(',', '.', $row->normal_amortisman_orani)
+                            'omur'                => $row->omur,
+                            'oran'                => str_replace([',', '%'], ['', ''], $row->oran),
+                            'teblig'              => $row->teblig,
                         ];
                         $amr->insert($data);
                     }
+                    $satir++;
                 });
 
             });
 
         });
-
     }
-
 }
