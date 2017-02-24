@@ -67,20 +67,22 @@ class Demirbas extends BaseController
     function demirbas_ayarlar()
     {
         $formlar        = [
-            'il_ilce'           => 'İl ve İlce Adı',
-            'il_ilce_kod'       => 'İl ve İlçe Kodu',
-            'harcama'           => 'Harcama Birimi',
-            'harcama_kod'       => 'Harcama Kodu',
-            'ambar'             => 'Ambar Adı',
-            'ambar_kod'         => 'Ambar Kodu',
-            'muhasebe'          => 'Muhasebe Birimi Adı',
-            'muhasebe_kod'      => 'Muhasebe Kodu',
-            'teslim_eden'       => 'Teslim Eden Kişi',
-            'teslim_eden_unvan' => 'Teslim Eden Ünvan',
-            'yetkili'           => 'Yetkili Kişi',
-            'yetkili_unvan'     => 'Yetkili Kişi Ünvan',
-            'teslim_alan'       => 'Teslim Alan Kişi',
-            'teslim_alan_unvan' => 'Teslim Alan Kişi Unvan'
+            'il_ilce'             => 'İl ve İlce Adı',
+            'il_ilce_kod'         => 'İl ve İlçe Kodu',
+            'harcama'             => 'Harcama Birimi',
+            'harcama_kod'         => 'Harcama Kodu',
+            'ambar'               => 'Ambar Adı',
+            'ambar_kod'           => 'Ambar Kodu',
+            'muhasebe'            => 'Muhasebe Birimi Adı',
+            'muhasebe_kod'        => 'Muhasebe Kodu',
+            'teslim_eden'         => 'Teslim Eden Kişi',
+            'teslim_eden_unvan'   => 'Teslim Eden Ünvan',
+            'yetkili'             => 'Giriş Yetkili Kişi',
+            'yetkili_unvan'       => 'Giriş Yetkili Kişi Ünvan',
+            'cikis_yetkili'       => 'Çıkış Yetkili Kişi',
+            'cikis_yetkili_unvan' => 'Çıkış Yetkili Kişi Ünvan',
+            'teslim_alan'         => 'Teslim Alan Kişi',
+            'teslim_alan_unvan'   => 'Teslim Alan Kişi Unvan'
         ];
         $demirbas_model = new Demirbas_model();
         $demirbas       = new Demirbas();
@@ -98,20 +100,22 @@ class Demirbas extends BaseController
         $demirbas_model = new Demirbas_model();
         $demirbas       = new Demirbas();
         $data           = [
-            'il_ilce'           => Input::get('il_ilce'),
-            'il_ilce_kod'       => Input::get('il_ilce_kod'),
-            'harcama'           => Input::get('harcama'),
-            'harcama_kod'       => Input::get('harcama_kod'),
-            'ambar'             => Input::get('ambar'),
-            'ambar_kod'         => Input::get('ambar_kod'),
-            'muhasebe'          => Input::get('muhasebe'),
-            'muhasebe_kod'      => Input::get('muhasebe_kod'),
-            'teslim_eden'       => Input::get('teslim_eden'),
-            'teslim_eden_unvan' => Input::get('teslim_eden_unvan'),
-            'yetkili'           => Input::get('yetkili'),
-            'yetkili_unvan'     => Input::get('yetkili_unvan'),
-            'teslim_alan'       => Input::get('teslim_alan'),
-            'teslim_alan_unvan' => Input::get('teslim_alan_unvan'),
+            'il_ilce'             => Input::get('il_ilce'),
+            'il_ilce_kod'         => Input::get('il_ilce_kod'),
+            'harcama'             => Input::get('harcama'),
+            'harcama_kod'         => Input::get('harcama_kod'),
+            'ambar'               => Input::get('ambar'),
+            'ambar_kod'           => Input::get('ambar_kod'),
+            'muhasebe'            => Input::get('muhasebe'),
+            'muhasebe_kod'        => Input::get('muhasebe_kod'),
+            'teslim_eden'         => Input::get('teslim_eden'),
+            'teslim_eden_unvan'   => Input::get('teslim_eden_unvan'),
+            'yetkili'             => Input::get('yetkili'),
+            'yetkili_unvan'       => Input::get('yetkili_unvan'),
+            'cikis_yetkili'       => Input::get('cikis_yetkili'),
+            'cikis_yetkili_unvan' => Input::get('cikis_yetkili_unvan'),
+            'teslim_alan'         => Input::get('teslim_alan'),
+            'teslim_alan_unvan'   => Input::get('teslim_alan_unvan'),
         ];
         $demirbas_model->demirbas_ayar_kaydet($data);
         return redirect()->back()->with('msg', $this->basarili);

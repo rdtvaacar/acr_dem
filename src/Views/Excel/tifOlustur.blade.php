@@ -162,13 +162,13 @@
     ?>
     <tr>
         <td><?php echo $satir; ?></td>
-        <td><?php echo $data->kod_1 . ' ' . $data->kod_2 . ' ' . $data->kod_3 . ' ' . $data->kod_4 . ' ' . $data->kod_5 . ' ' . $data->kod_6  ?></td>
-        <td><?php echo $sicilNo ?></td>
-        <td colspan="3"><?php echo $data->demirbas_isim ?></td>
-        <td><?php echo $data->demirbas_birim ?></td>
-        <td><?php echo $miktar[] = $data->demirbas_miktar ?></td>
-        <td colspan="2"><?php echo $data->demirbas_deger ?>₺</td>
-        <td colspan="2"><?php echo $data->demirbas_miktar * $data->demirbas_deger ?>₺</td>
+        <td width="11"><?php echo $data->kod_1 . ' ' . $data->kod_2 . ' ' . $data->kod_3 . ' ' . $data->kod_4 . ' ' . $data->kod_5 . ' ' . $data->kod_6  ?></td>
+        <td width="15"><?php echo $sicilNo ?></td>
+        <td width="15" colspan="3"><?php echo $data->demirbas_isim ?></td>
+        <td width="6"><?php echo $data->demirbas_birim ?></td>
+        <td width="7"><?php echo $miktar[] = $data->demirbas_miktar ?></td>
+        <td width="5" colspan="2"><?php echo $data->demirbas_deger ?>₺</td>
+        <td width="7" colspan="2"><?php echo $data->demirbas_miktar * $data->demirbas_deger ?>₺</td>
     </tr>
     </tbody>
     <?php $satir++; }
@@ -197,13 +197,13 @@
         <td></td>
         <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->yetkili ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->yetkili ?></span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Adı Soyadı: <?php echo $ayar->cikis_yetkili ?></span></td>
     </tr>
     <tr>
         <td></td>
         <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->yetkili_unvan ?></span></td>
         <td></td>
-        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->yetkili_unvan ?></span></td>
+        <td style="float:left;" colspan="5"><span class="baslik4">Ünvanı: <?php echo $ayar->cikis_yetkili_unvan ?></span></td>
     </tr>
     <tr>
         <td></td>
