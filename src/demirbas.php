@@ -115,11 +115,11 @@ class Demirbas extends BaseController
     {
         return $raporlar = [
             'tif'             => 'Taşınır İşlem Fişi',
-            'zimmet_tasit'    => 'Zimmet Fişi (Taşıt & MAK)',
+          /*  'zimmet_tasit'    => 'Zimmet Fişi (Taşıt & MAK)',
             'zimmet_demirbas' => 'Zimmet Fişi Demirbaş',
             'gecici_alindi'   => 'Taşınır Geçici Alındısı',
             'dusme'           => 'Kayıttan Düşme Teklif Onay',
-            'ambar_devir'     => 'Ambar Devir Teslim Tutanağı',
+            'ambar_devir'     => 'Ambar Devir Teslim Tutanağı',*/
         ];
     }
 

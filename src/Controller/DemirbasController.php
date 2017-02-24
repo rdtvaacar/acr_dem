@@ -127,10 +127,11 @@ class DemirbasController extends BaseController
         return Excel::create('Demirbaş Listesi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
 
             $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
+                $demirbasSatir = 19 + $demirbas_data->count();
                 $sheet->setFontFamily('Arial');
                 $sheet->setBorder('A3:L10', 'medium');
                 $sheet->setBorder('A13:L16', 'medium');
-                $sheet->setBorder('A19:L22', 'medium');
+                $sheet->setBorder('A19:L' . $demirbasSatir, 'medium');
                 $sheet->loadView('acr_views::Excel.tifOlustur', compact('demirbas_data', 'demirbas', 'ayar'));
             });
         })->export('xls');

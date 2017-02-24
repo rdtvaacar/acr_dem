@@ -31,6 +31,17 @@
         float: left;
     }
 </style>
+<?php if (empty($ayar)) { ?>
+<table class="tablo" width="100">
+    <tbody>
+    <tr>
+        <td colspan="12" align="center"><span class="baslik">AYARLAR MENÜSÜNDEN TAŞINIR AYARLARINIZI YAPILANDIRMANIZ GEREKLİ</span></td>
+    </tr>
+    </tbody>
+</table>
+<?php } else { ?>
+
+
 <table class="tablo">
     <tbody>
     <tr>
@@ -169,7 +180,7 @@
         <td colspan="6"><span class="baslik4">Yukarıda gösterilen <?php echo $satir - 1; ?> kalem ve toplam <?php echo array_sum
                 ($miktar) ?>
                 taşınırın.</span></td>
-        <td style="border-top: medium; border-left: medium; " colspan="6"><span class="baslik4">Yukarıda gösterilen <?php echo $satir - 1; ?> kalem ve toplam <?php echo array_sum($miktar) ?> taşınırın.</span></td>
+        <td colspan="6"><span class="baslik4">Yukarıda gösterilen <?php echo $satir - 1; ?> kalem ve toplam <?php echo array_sum($miktar) ?> taşınırın.</span></td>
     </tr>
     <tr>
         <td colspan="6"><span class="baslik4">GİRİŞ KAYDI YAPILMIŞTIR <?php echo date('d/m/Y') ?></span></td>
@@ -230,3 +241,4 @@
         <td style="float:left;" colspan="5"><span class="baslik4">İmzası:........................................</span></td>
     </tr>
 </table>
+<?php }  ?>
