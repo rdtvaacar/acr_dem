@@ -38,7 +38,7 @@
     </td>
     <td id="amortisman_son_yil_<?php echo $demirbas->demirbas_id?>">
         <?php if (!empty($demirbas->amortisman_id)) {
-            echo date('d/', strtotime($demirbas->demirbas_alis_tarihi)) . date('m/', strtotime($demirbas->demirbas_alis_tarihi)) . (date('Y/', strtotime($demirbas->demirbas_alis_tarihi)) + $demirbas->omur);
+            echo (date('Y/', strtotime($demirbas->demirbas_alis_tarihi)) + $demirbas->omur) . date('m/', strtotime($demirbas->demirbas_alis_tarihi)) . date('d/', strtotime($demirbas->demirbas_alis_tarihi));
         }?>
     </td>
     <td nowrap="nowrap">
