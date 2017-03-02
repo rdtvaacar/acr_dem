@@ -59,6 +59,7 @@
                     <th></th>
                     <th>ID</th>
                     <th>Demirbaş</th>
+                    <th>Tarih</th>
                     <th>Kodu</th>
                     <th>Değer</th>
                     <th>Miktar</th>
