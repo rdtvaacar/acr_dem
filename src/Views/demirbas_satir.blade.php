@@ -12,7 +12,7 @@
                id="demirbas_isim_<?php echo $demirbas->demirbas_id?>"><?php echo empty($demirbas->demirbas_isim) ? 'Demirbaş İsmi' : $demirbas->demirbas_isim;  ?></label>
     </td>
     <td>
-        <span id="demirbas__tarih_<?php echo $demirbas->demirbas_id?>"><?php echo date('Y-m-d', $demirbas->tarih)  ?></span>
+        <span id="demirbas__tarih_<?php echo $demirbas->demirbas_id?>"><?php echo date('Y-m-d', $demirbas->demirbas_alis_tarihi)  ?></span>
         <div onclick="demirbas_tarih_(<?php echo $demirbas->demirbas_id?>)" class="btn btn-info btn-xs " style="float:right;"><span class="glyphicon glyphicon-record"></span></div>
     </td>
     <td>
