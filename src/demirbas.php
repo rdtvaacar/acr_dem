@@ -7,6 +7,7 @@ use Acr\Demirbas\Model\Demirbas_ayar_model;
 use Acr\Demirbas\Model\Demirbas_firma_model;
 use Acr\Demirbas\Model\Demirbas_grup_model;
 use Acr\Demirbas\Model\Demirbas_hesap_model;
+use Illuminate\Http\Request;
 use DB;
 use App\Handlers\Commands\my;
 use Form;
@@ -123,14 +124,17 @@ class Demirbas extends BaseController
 
     function raporOlustur()
     {
+        $rapor              = Input::get('rapor');
+        $id                 = Input::get('demirbas_id');
         $demirbasController = new DemirbasController();
-        return $demirbasController->tifOlustur();
+        return $demirbasController->excelRapor($rapor, $id);
     }
 
     function raporlar()
     {
         return $raporlar = [
-            'tif' => 'Taşınır İşlem Fişi',
+            'tif'            => 'Taşınır İşlem Fişi',
+            'demirbas_istek' => 'Taşınır İstek Belgesi',
             /*  'zimmet_tasit'    => 'Zimmet Fişi (Taşıt & MAK)',
               'zimmet_demirbas' => 'Zimmet Fişi Demirbaş',
               'gecici_alindi'   => 'Taşınır Geçici Alındısı',
@@ -221,12 +225,11 @@ class Demirbas extends BaseController
     function demirbas_duzenle_kaydet()
     {
         $demirbas_model = new Demirbas_model();
+        $demirbas       = new Demirbas();
+        $demirbas_id    = Input::get('demirbas_id');
+        $yeni_demirbas  = Input::get('yeni_demirbas');
 
-        $demirbas      = new Demirbas();
-        $demirbas_id   = Input::get('demirbas_id');
-        $yeni_demirbas = Input::get('yeni_demirbas');
-        $demirbas_no   = empty(Input::get('demirbas_no')) ? $demirbas_model->demirbas_no() : Input::get('demirbas_no');
-        $data          = [
+        $data = [
             'birim_id'                => Input::get('birim_id'),
             'grup_id'                 => Input::get('grup_id'),
             'amortisman_id'           => Input::get('amortisman_id'),
@@ -234,7 +237,7 @@ class Demirbas extends BaseController
             'demirbas_isim'           => Input::get('demirbas_isim'),
             'demirbas_aciklama'       => Input::get('demirbas_aciklama'),
             'demirbas_marka'          => Input::get('demirbas_marka'),
-            'demirbas_no'             => $demirbas_no,
+            'demirbas_no'             => Input::get('demirbas_no'),
             'demirbas_kodu'           => Input::get('demirbas_kodu'),
             'demirbas_plaka'          => Input::get('demirbas_plaka'),
             'demirbas_sasi_no'        => Input::get('demirbas_sasi_no'),
@@ -291,8 +294,9 @@ class Demirbas extends BaseController
     function demirbas($id)
     {
         $demirbas_model = new Demirbas_model();
+        $demirbas_no    = empty(Input::get('demirbas_no')) ? $demirbas_model->demirbas_no() : Input::get('demirbas_no');
         if (empty($id)) {
-            $id = $demirbas_model->insertGetId(['uye_id' => $this->uye_id(), 'kurum_id' => $this->kurum_id(), 'demirbas_isim' => '']);
+            $id = $demirbas_model->insertGetId(['uye_id' => $this->uye_id(), 'kurum_id' => $this->kurum_id(), 'demirbas_isim' => '', 'demirbas_no' => $demirbas_no]);
         }
         $demirbas_satir = $demirbas_model->demirbas($id);
         return $demirbas_satir;

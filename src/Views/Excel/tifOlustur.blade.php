@@ -61,7 +61,7 @@
     <tr>
         <td style="float: left;" colspan="5">HARCAMA BİRİMİNİN</td>
         <td>ADI</td>
-        <td colspan="3"><?php echo $ayar->harcama ?></td>
+        <td width="32" colspan="3"><?php echo $ayar->harcama ?></td>
         <td>KODU</td>
         <td colspan="2"><?php echo $ayar->harcama_kod ?></td>
     </tr>
@@ -165,7 +165,7 @@
         <td width="11"><?php echo $data->kod_1 . ' ' . $data->kod_2 . ' ' . $data->kod_3 . ' ' . $data->kod_4 . ' ' . $data->kod_5 . ' ' . $data->kod_6  ?></td>
         <td width="15"><?php echo $sicilNo ?></td>
         <td width="15" colspan="3"><?php echo $data->demirbas_isim ?></td>
-        <td width="6"><?php echo $data->demirbas_birim ?></td>
+        <td width="6"><?php echo $data->birim_isim ?></td>
         <td width="7"><?php echo $miktar[] = $data->demirbas_miktar ?></td>
         <td width="5" colspan="2"><?php echo $data->demirbas_deger ?>₺</td>
         <td width="7" colspan="2"><?php echo $data->demirbas_miktar * $data->demirbas_deger ?>₺</td>

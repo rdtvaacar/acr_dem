@@ -1,11 +1,10 @@
 <tr id="demirbas_<?php echo $demirbas->demirbas_id?>">
-
     <td>
         <input name="demirbas_id[]" id="demirbas_id_<?php echo $demirbas->demirbas_id?>" value="<?php echo $demirbas->demirbas_id?>" type="checkbox" style="width:18px; height:18px;"/>
     </td>
     <td>
         <label for="demirbas_id_<?php echo $demirbas->demirbas_id?>"
-               id="demirbas_isim_<?php echo $demirbas->demirbas_id?>"><?php echo $demirbas->demirbas_id?></label>
+               id="demirbas_id_<?php echo $demirbas->demirbas_id?>"><?php echo $demirbas->demirbas_id?></label>
     </td>
     <td>
         <span id="demirbas_yenile_<?php echo $demirbas->demirbas_id?>"></span>
@@ -24,7 +23,6 @@
                 id="demirbas_grup_<?php echo $demirbas->demirbas_id?>"><?php echo !empty($demirbas->grup_id) ? 'G_' . $demirbas->grup_id . ' ' . $demirbas_func->sayYaz(15, $demirbas->grup_isim) : ''; ?> </span>
         <div onclick="demirbas_grup_sec(<?php echo $demirbas->demirbas_id?>)" class="btn btn-info btn-xs " style="float:right;"><span class="glyphicon glyphicon-record"></span></div>
     </td>
-
     <td nowrap="nowrap"><span id="demirbas_firma_<?php echo $demirbas->demirbas_id?>"><?php echo !empty($demirbas->firma_id) ? 'F_' . $demirbas->firma_id . ' ' . $demirbas_func->sayYaz(15, $demirbas->firma_isim) : '';
             ?></span>
         <div onclick="demirbas_firma_sec(<?php echo $demirbas->demirbas_id?>)" class="btn btn-info btn-xs " style="float:right;"><span class="glyphicon glyphicon-record"></span></div>

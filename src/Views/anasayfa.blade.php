@@ -39,9 +39,11 @@
     <div style="clear:both;"></div>
     <div style="float: left; margin-left: 10px; ">
         <div class="bax" style="padding: 4px;">
-            <?php echo Form::open(['url' => 'raporOlustur']);?>
+            <?php
+
+            echo Form::open(['url' => 'raporOlustur']);?>
             <div style=" margin-left: auto; margin-right: auto; width: 400px; text-align: center;">
-                <select style="padding: 2px; ">
+                <select name="rapor" style="padding: 2px; ">
                     <option>Raporlar</option>
                     <?php foreach ($raporlar as $val=>$rapor) { ?>
                     <option value="<?php echo $val ?>"><?php echo $rapor; ?></option>
@@ -77,15 +79,7 @@
                 } ?>
                 </tbody>
             </table>
-            <div style=" margin-left: auto; margin-right: auto; width: 400px; text-align: center;">
-                <select style="padding: 2px; ">
-                    <option>Raporlar</option>
-                    <?php foreach ($raporlar as $val=>$rapor) { ?>
-                    <option value="<?php echo $val ?>"><?php echo $rapor; ?></option>
-                    <?php } ?>
-                </select>
-                <button class="btn btn-bitbucket btn-xs">Rapor Oluştur</button>
-            </div>
+         
             <?php echo Form::close() ?>
         </div>
     </div>

@@ -14,6 +14,7 @@ use Acr\Demirbas\Model\Demirbas_model;
 use Acr\Demirbas\Demirbas;
 use File;
 use Acr\Demirbas\Model\Demirbas_hesap_model;
+use Illuminate\Http\Request;
 
 class DemirbasController extends BaseController
 {
@@ -118,22 +119,39 @@ class DemirbasController extends BaseController
         unlink(public_path() . '/' . $isim);
     }
 
-    function tifOlustur()
+    function excelRapor($rapor, $id)
     {
+
         $demirbas_modal = new Demirbas_model();
         $demirbas       = new Demirbas();
         $ayar           = $demirbas_modal->demirbas_ayar();
-        $demirbas_data  = $demirbas_modal->demirbasDizi(Input::get('demirbas_id'));
-        return Excel::create('Demirbaş Listesi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
+        $demirbas_data  = $demirbas_modal->demirbasDizi($id);
+        switch ($rapor) {
+            case 'tif';
+                return Excel::create('Demirbaş TİF Fişi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
+                    $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
+                        $demirbasSatir = 19 + $demirbas_data->count();
+                        $sheet->setFontFamily('Arial');
+                        $sheet->setBorder('A3:L10', 'medium');
+                        $sheet->setBorder('A13:L16', 'medium');
+                        $sheet->setBorder('A19:L' . $demirbasSatir, 'medium');
+                        $sheet->loadView('acr_views::Excel.tifOlustur', compact('demirbas_data', 'demirbas', 'ayar'));
+                    });
+                })->export('xls');
+                break;
+            case 'demirbas_istek';
+                return Excel::create('Demirbaş İstek Belgesi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
+                    $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
+                        $demirbasSatir = 5 + $demirbas_data->count();
+                        $sheet->setFontFamily('Arial');
+                        $sheet->setBorder('A4:G5', 'thin');
+                        $sheet->setBorder('A6:G' . $demirbasSatir, 'thin');
+                        $sheet->loadView('acr_views::Excel.tasinirIstek', compact('demirbas_data', 'demirbas', 'ayar'));
+                    });
+                })->export('xls');
+                break;
+        }
 
-            $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
-                $demirbasSatir = 19 + $demirbas_data->count();
-                $sheet->setFontFamily('Arial');
-                $sheet->setBorder('A3:L10', 'medium');
-                $sheet->setBorder('A13:L16', 'medium');
-                $sheet->setBorder('A19:L' . $demirbasSatir, 'medium');
-                $sheet->loadView('acr_views::Excel.tifOlustur', compact('demirbas_data', 'demirbas', 'ayar'));
-            });
-        })->export('xls');
     }
+
 }
