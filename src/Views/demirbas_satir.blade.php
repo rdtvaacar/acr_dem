@@ -13,7 +13,6 @@
     </td>
     <td>
         <span id="demirbas__tarih_<?php echo $demirbas->demirbas_id?>"><?php echo date('Y-m-d', strtotime($demirbas->demirbas_alis_tarihi))  ?></span>
-        <div onclick="demirbas_tarih_(<?php echo $demirbas->demirbas_id?>)" class="btn btn-info btn-xs " style="float:right;"><span class="glyphicon glyphicon-record"></span></div>
     </td>
     <td>
         <span id="demirbas_hesap_kod_<?php echo $demirbas->demirbas_id?>"><?php echo $demirbas->kod_1 . ' ' . $demirbas->kod_2 . ' ' . $demirbas->kod_3 . ' ' . $demirbas->kod_4 . ' ' . $demirbas->kod_5 . ' ' .
