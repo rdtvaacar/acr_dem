@@ -85,14 +85,14 @@
     <tr>
         <td style="float: left;" colspan="5">MUAYENE VE KABUL KOMİSYONU TUTANAĞININ</td>
         <td>TARİHİ</td>
-        <td colspan="3"><?php echo date('d/m/Y', strtotime($demirbas->demirbas_alis_tarihi))  ?></td>
+        <td colspan="3"><?php echo date('d/m/Y', strtotime($data->demirbas_alis_tarihi))  ?></td>
         <td>SAYISI</td>
         <td colspan="2"></td>
     </tr>
     <tr>
         <td style="float: left;" colspan="5">DAYANAĞI BELGENİN</td>
         <td>TARİHİ</td>
-        <td colspan="3"><?php echo date('d/m/Y', strtotime($demirbas->demirbas_alis_tarihi))  ?></td>
+        <td colspan="3"><?php echo date('d/m/Y', strtotime($data->demirbas_alis_tarihi))  ?></td>
         <td>SAYISI</td>
         <td colspan="2"></td>
     </tr>
