@@ -51,6 +51,7 @@
         <td style="float: left;" colspan="2">Fiş Sıra No :</td>
         <td colspan="8"></td>
         <td colspan="2">TARİH :<?php echo date('d/m/Y') ?></td>
+    </tr>
     <tr>
         <td style="float: left;" colspan="5">İL VE İLÇENİN</td>
         <td>ADI</td>
