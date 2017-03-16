@@ -151,7 +151,7 @@ class DemirbasController extends BaseController
                 })->export('xls');
                 break;
             case 'kitapListesi';
-                return Excel::create('Demirbaş İstek Belgesi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
+                return Excel::create('Kütüphane Defteri', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
                     $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
                         $demirbasSatir = 5 + $demirbas_data->count();
                         $sheet->setFontFamily('Arial');

@@ -135,6 +135,7 @@ class Demirbas extends BaseController
         return $raporlar = [
             'tif'            => 'Taşınır İşlem Fişi',
             'demirbas_istek' => 'Taşınır İstek Belgesi',
+            'kitapListesi'   => 'Kütüphane Defteri',
             /*  'zimmet_tasit'    => 'Zimmet Fişi (Taşıt & MAK)',
               'zimmet_demirbas' => 'Zimmet Fişi Demirbaş',
               'gecici_alindi'   => 'Taşınır Geçici Alındısı',

@@ -35,41 +35,75 @@
 <table class="tablo" width="100">
     <tbody>
     <tr>
-        <td colspan="7" align="center"><span class="baslik">AYARLAR MENÜSÜNDEN TAŞINIR AYARLARINIZI YAPILANDIRMANIZ GEREKLİ</span></td>
+        <td colspan="32" align="center"><span class="baslik">AYARLAR MENÜSÜNDEN TAŞINIR AYARLARINIZI YAPILANDIRMANIZ GEREKLİ</span></td>
     </tr>
     </tbody>
 </table>
 <?php } else { ?>
-
-
 <table class="tablo">
     <tbody>
     <tr>
-        <td colspan="7" align="center"><span class="baslik">TAŞINIR İSTEK BELGESİ </span></td>
-    </tr>
-    <tr>
-        <td style="float: left;" colspan="3">İstek Yapan Birim :</td>
-        <td colspan="3">TARİH :<?php echo date('d/m/Y') ?></td>
-        <td style="float: right;">NO:......</td>
-    <tr>
-        <td colspan="7" style="text-align: center; height: 30px; font-size: 12pt;">T A Ş I N I R I N</td>
-    </tr>
-    <tr class="baslik4">
-        <td rowspan="2">NO</td>
-        <td rowspan="2">KODU</td>
-        <td rowspan="2" colspan="2">ADI</td>
-        <td rowspan="2">BİRİMİ</td>
-        <td rowspan="2">İSTENEN MİKTAR</td>
-        <td rowspan="2">KARŞILANAN MİKTAR</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
+        <td colspan="29" align="center"><span class="baslik">K Ü T Ü P H A N E  D E F T E R İ </span></td>
         <td colspan="2"></td>
         <td></td>
+    </tr>
+    <tr>
+        <td style="float: left;" colspan="2">GİRİŞ</td>
+        <td colspan="28"></td>
+        <td style="float: right;">ÇIKIŞ</td>
         <td></td>
+    </tr>
+
+    <tr>
+        <td style="float: left;" colspan="8">İL VE İLÇENİN</td>
+        <td>ADI</td>
+        <td colspan="9"><?php echo $ayar->il_ilce ?></td>
+        <td>KODU</td>
+        <td colspan="3"><?php echo $ayar->il_ilce_kod ?></td>
         <td></td>
+        <td>TAŞINIRIN</td>
+        <td colspan="3">ADI</td>
+        <td colspan="5"></td>
+
+    </tr>
+    <tr>
+        <td style="float: left;" colspan="8">HARCAMA BİRİMİNİN</td>
+        <td>ADI</td>
+        <td colspan="9"><?php echo $ayar->harcama ?></td>
+        <td>KODU</td>
+        <td colspan="3"><?php echo $ayar->harcama_kod ?></td>
         <td></td>
+        <td>TAŞINIRIN</td>
+        <td colspan="3">ADI</td>
+        <td colspan="5"></td>
+
+    </tr>
+    <tr>
+        <td style="float: left;" colspan="8">AMBAR BİRİMİNİN</td>
+        <td>ADI</td>
+        <td colspan="9"><?php echo $ayar->ambar ?></td>
+        <td>KODU</td>
+        <td colspan="3"><?php echo $ayar->ambar_kod ?></td>
+        <td></td>
+        <td>TAŞINIRIN</td>
+        <td colspan="3">ADI</td>
+        <td colspan="5"></td>
+
+    </tr>
+    <tr>
+        <td style="float: left;" colspan="8">MUHASEBE BİRİMİNİN</td>
+        <td>ADI</td>
+        <td colspan="9"><?php echo $ayar->muhasebe ?></td>
+        <td>KODU</td>
+        <td colspan="3"><?php echo $ayar->muhasebe_kod ?></td>
+        <td></td>
+        <td>TAŞINIRIN</td>
+        <td colspan="3">ADI</td>
+        <td colspan="5"></td>
+
+    </tr>
+    <tr>
+        <td height="10" colspan="32"></td>
     </tr>
     <?php
     $satir = 1;
@@ -80,55 +114,42 @@
     ?>
     <tr>
         <td><?php echo $satir; ?></td>
-        <td width="18"><?php echo $data->kod_1 . ' ' . $data->kod_2 . ' ' . $data->kod_3 . ' ' . $data->kod_4 . ' ' . $data->kod_5 . ' ' . $data->kod_6  ?></td>
-        <td width="25" colspan="2"><?php echo $data->demirbas_isim ?></td>
-        <td width="9"><?php echo $data->birim_isim ?></td>
-        <td width="16"><?php echo $miktar[] = $data->demirbas_miktar ?></td>
-        <td width="16"><?php echo $miktar[] = $data->demirbas_miktar ?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><?php echo $ata->demirbas_yazar ?></td>
+        <td><?php echo $ata->demirbas_isim ?></td>
+        <td><?php echo $ata->demirbas_basim_yer?></td>
+        <td><?php echo $ata->demirbas_basim_yil ?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><?php echo $data->demirbas_deger ?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
     </tbody>
     <?php $satir++; }
     }?>
-    <tr>
-        <td colspan="7" height="16px;"></td>
-    </tr>
-    <tr>
-        <td colspan="3">Birimimiz ihtiyacı için yukarıda belirtilen</td>
-        <td colspan="4">Karşılanan Miktar" sütununda kayıtlı</td>
-    </tr>
-    <tr>
-        <td colspan="3"> taşınırların verilmesi rica olunur.</td>
-        <td colspan="4">miktarları teslim edilmiştir.</td>
-    </tr>
-    <tr>
-        <td colspan="3"><span class="baslik4">İstek Yapan Birim Yöneticisi</span></td>
-        <td colspan="4"><span class="baslik4">Taşınır Kayıt ve Kontrol Yetkilisi</span></td>
-    </tr>
-    <tr>
-        <td colspan="7" height="16px;"></td>
-    </tr>
 
-    <tr>
-        <td></td>
-        <td style="float:left;" colspan="2"><span class="baslik4">Adı Soyadı:.............................. </span></td>
-        <td></td>
-        <td style="float:left;" colspan="3"><span class="baslik4">Adı Soyadı: <?php echo $ayar->yetkili ?></span></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td style="float:left;" colspan="2"><span class="baslik4">Ünvanı:.................................. </span></td>
-        <td></td>
-        <td style="float:left;" colspan="3"><span class="baslik4">Ünvanı: <?php echo $ayar->yetkili_unvan ?></span></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td style="float:left;" colspan="2"><span class="baslik4">İmzası:........................................</span></td>
-        <td></td>
-        <td style="float:left;" colspan="3"><span class="baslik4">İmzası:........................................</span></td>
-    </tr>
-    <tr>
-        <td colspan="7" height="16px;"></td>
-    </tr>
 
 </table>
 <?php }  ?>

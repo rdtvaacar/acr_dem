@@ -162,6 +162,8 @@ class Demirbas_model extends Model
 
     function demirbas_no()
     {
-        return Demirbas_model::where('kurum_id', $this->kurum_id())->where('sil', 0)->orderBy('id', 'desc')->select('demirbas_no')->first()->demirbas_no + 1;
+        $demirbasSorgu = Demirbas_model::where('kurum_id', $this->kurum_id())->where('sil', 0)->orderBy('id', 'desc')->select('demirbas_no');
+        return $demirbasSorgu->count() > 0 ? $demirbasSorgu->first()->demirbas_no + 1 : 1;
+        
     }
 }
