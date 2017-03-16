@@ -153,11 +153,11 @@ class DemirbasController extends BaseController
             case 'kitapListesi';
                 return Excel::create('Kütüphane Defteri', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
                     $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
-                        $demirbasSatir = 5 + $demirbas_data->count();
+                        $demirbasSatir = 11 + $demirbas_data->count();
                         $sheet->setFontFamily('Arial');
-                        $sheet->setBorder('A4:G5', 'thin');
-                        $sheet->setBorder('A6:G' . $demirbasSatir, 'thin');
-                        $sheet->loadView('acr_views::Excel.tasinirIstek', compact('demirbas_data', 'demirbas', 'ayar'));
+                        $sheet->setBorder('A4:G11', 'thin');
+                        $sheet->setBorder('A12:G' . $demirbasSatir, 'thin');
+                        $sheet->loadView('acr_views::Excel.kitapListesi', compact('demirbas_data', 'demirbas', 'ayar'));
                     });
                 })->export('xls');
                 break;
