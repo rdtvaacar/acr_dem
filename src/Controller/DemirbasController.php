@@ -155,8 +155,8 @@ class DemirbasController extends BaseController
                     $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
                         $demirbasSatir = 11 + $demirbas_data->count();
                         $sheet->setFontFamily('Arial');
-                        $sheet->setBorder('A4:G11', 'thin');
-                        $sheet->setBorder('A12:G' . $demirbasSatir, 'thin');
+                        $sheet->setBorder('A3:AE11', 'thin');
+                        $sheet->setBorder('A8:AE' . $demirbasSatir, 'thin');
                         $sheet->loadView('acr_views::Excel.kitapListesi', compact('demirbas_data', 'demirbas', 'ayar'));
                     });
                 })->export('xls');
