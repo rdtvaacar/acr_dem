@@ -120,10 +120,10 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><?php echo $ata->demirbas_yazar ?></td>
-        <td><?php echo $ata->demirbas_isim ?></td>
-        <td><?php echo $ata->demirbas_basim_yer?></td>
-        <td><?php echo $ata->demirbas_basim_yil ?></td>
+        <td><?php echo $data->demirbas_yazar ?></td>
+        <td><?php echo $data->demirbas_isim ?></td>
+        <td><?php echo $data->demirbas_basim_yer?></td>
+        <td><?php echo $data->demirbas_basim_yil ?></td>
         <td></td>
         <td></td>
         <td></td>
