@@ -136,7 +136,7 @@ class DemirbasController extends BaseController
                         $sheet->setBorder('A3:L10', 'thin');
                         $sheet->setBorder('A13:L16', 'thin');
                         $sheet->setBorder('A19:L' . $demirbasSatir, 'thin');
-                        $sheet->loadView('acr_views::Excel.tifOlustur', compact('demirbas_data', 'demirbas', 'ayar'));
+                        $sheet->loadView('acr_views::Excel.tifOlustur', compact('demirbas_data', 'demirbas', 'ayar','demirbas_tarih'));
                     });
                 })->export('xls');
                 break;
