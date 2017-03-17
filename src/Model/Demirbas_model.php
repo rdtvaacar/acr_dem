@@ -133,6 +133,7 @@ class Demirbas_model extends Model
             ->select('demirbas_alis_tarihi')
             ->first()->demirbas_alis_tarihi;
         return date('d/m/Y', strtotime($demirbas_tarih));
+
     }
 
     function hesap_kod_ara($kod1, $kod2, $kod3, $kod4, $kod5, $kod6)
