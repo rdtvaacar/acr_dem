@@ -126,12 +126,13 @@ class Demirbas_model extends Model
 
     function olasiTifTarih($dizi)
     {
-        return $demirbas_tarih = Demirbas_model::where('kurum_id', $this->kurum_id())
+        $demirbas_tarih = Demirbas_model::where('kurum_id', $this->kurum_id())
             ->where('sil', 0)
             ->whereIn('id', $dizi)
             ->orderBy('grup_id')
             ->select('demirbas_alis_tarihi')
             ->first()->demirbas_alis_tarihi;
+        return date('d/m/Y', strtotime($demirbas_tarih));
     }
 
     function hesap_kod_ara($kod1, $kod2, $kod3, $kod4, $kod5, $kod6)
