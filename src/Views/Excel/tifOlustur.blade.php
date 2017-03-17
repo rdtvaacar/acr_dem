@@ -50,7 +50,7 @@
     <tr>
         <td style="float: left;" colspan="2">Fiş Sıra No :</td>
         <td colspan="8"></td>
-        <td colspan="2">TARİH :<?php echo date('d/m/Y') ?></td>
+        <td colspan="2">TARİH :<?php echo $demirbas_tarih ?></td>
     </tr>
     <tr>
         <td style="float: left;" colspan="5">İL VE İLÇENİN</td>
@@ -86,14 +86,14 @@
     <tr>
         <td style="float: left;" colspan="5">MUAYENE VE KABUL KOMİSYONU TUTANAĞININ</td>
         <td>TARİHİ</td>
-        <td colspan="3"><?php echo date('d/m/Y') ?></td>
+        <td colspan="3"><?php echo $demirbas_tarih ?></td>
         <td>SAYISI</td>
         <td colspan="2"></td>
     </tr>
     <tr>
         <td style="float: left;" colspan="5">DAYANAĞI BELGENİN</td>
         <td>TARİHİ</td>
-        <td colspan="3"><?php echo date('d/m/Y') ?></td>
+        <td colspan="3"><?php echo $demirbas_tarih ?></td>
         <td>SAYISI</td>
         <td colspan="2"></td>
     </tr>
@@ -184,8 +184,8 @@
         <td colspan="6"><span class="baslik4">Yukarıda gösterilen <?php echo $satir - 1; ?> kalem ve toplam <?php echo array_sum($miktar) ?> taşınırın.</span></td>
     </tr>
     <tr>
-        <td colspan="6"><span class="baslik4">GİRİŞ KAYDI YAPILMIŞTIR <?php echo date('d/m/Y') ?></span></td>
-        <td colspan="6"><span class="baslik4">ÇIKIŞ KAYDI YAPILMIŞTIR <?php echo date('d/m/Y') ?></span></td>
+        <td colspan="6"><span class="baslik4">GİRİŞ KAYDI YAPILMIŞTIR <?php echo $demirbas_tarih ?></span></td>
+        <td colspan="6"><span class="baslik4">ÇIKIŞ KAYDI YAPILMIŞTIR <?php echo $demirbas_tarih ?></span></td>
     </tr>
     <tr>
         <td colspan="12" height="16px;"></td>
@@ -216,12 +216,12 @@
         <td colspan="12" height="16px;"></td>
     </tr>
     <tr>
-        <td colspan="6"><span class="baslik4">TESLİM EDİLMİŞTİR <?php echo date('d/m/Y') ?></span></td>
-        <td colspan="6"><span class="baslik4">TESLİM ALINMIŞTIR <?php echo date('d/m/Y') ?></span></td>
+        <td colspan="6"><span class="baslik4">TESLİM EDİLMİŞTİR <?php echo $demirbas_tarih ?></span></td>
+        <td colspan="6"><span class="baslik4">TESLİM ALINMIŞTIR <?php echo $demirbas_tarih ?></span></td>
     </tr>
     <tr>
-        <td colspan="6"><span class="baslik4">TESLİM EDEN <?php echo date('d/m/Y') ?></span></td>
-        <td colspan="6"><span class="baslik4">TESLİM ALAN <?php echo date('d/m/Y') ?></span></td>
+        <td colspan="6"><span class="baslik4">TESLİM EDEN <?php echo $demirbas_tarih ?></span></td>
+        <td colspan="6"><span class="baslik4">TESLİM ALAN <?php echo $demirbas_tarih ?></span></td>
     </tr>
     <tr>
         <td></td>

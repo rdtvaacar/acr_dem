@@ -124,6 +124,16 @@ class Demirbas_model extends Model
             ->get();
     }
 
+    function olasiTifTarih($dizi)
+    {
+        return $demirbas_tarih = Demirbas_model::where('kurum_id', $this->kurum_id())
+            ->where('sil', 0)
+            ->whereIn('id', $dizi)
+            ->orderBy('grup_id')
+            ->select('demirbas_alis_tarihi')
+            ->first()->demirbas_alis_tarihi;
+    }
+
     function hesap_kod_ara($kod1, $kod2, $kod3, $kod4, $kod5, $kod6)
     {
         $kod2 = empty($kod2) ? 0 : $kod2;
@@ -164,6 +174,6 @@ class Demirbas_model extends Model
     {
         $demirbasSorgu = Demirbas_model::where('kurum_id', $this->kurum_id())->where('sil', 0)->orderBy('id', 'desc')->select('demirbas_no');
         return $demirbasSorgu->count() > 0 ? $demirbasSorgu->first()->demirbas_no + 1 : 1;
-        
+
     }
 }

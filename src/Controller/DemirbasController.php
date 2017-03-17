@@ -126,10 +126,11 @@ class DemirbasController extends BaseController
         $demirbas       = new Demirbas();
         $ayar           = $demirbas_modal->demirbas_ayar();
         $demirbas_data  = $demirbas_modal->demirbasDizi($id);
+        $demirbas_tarih =  $demirbas_modal->olasiTifTarih($idF);
         switch ($rapor) {
             case 'tif';
-                return Excel::create('Demirbaş TİF Fişi', function ($excel) use ($demirbas_data, $demirbas, $ayar) {
-                    $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar) {
+                return Excel::create('Demirbaş TİF Fişi', function ($excel) use ($demirbas_data, $demirbas, $ayar,$demirbas_tarih) {
+                    $excel->sheet('sayfa', function ($sheet) use ($demirbas_data, $demirbas, $ayar,$demirbas_tarih) {
                         $demirbasSatir = 19 + $demirbas_data->count();
                         $sheet->setFontFamily('Arial');
                         $sheet->setBorder('A3:L10', 'thin');
